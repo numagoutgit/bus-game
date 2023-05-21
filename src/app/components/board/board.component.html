@@ -1,1 +1,21 @@
-<button (click)="printDeck()">Test deck</button>
+<div class="main">
+  <div class="bus-wrapper">
+    <app-card></app-card>
+    <app-card></app-card>
+    <app-card></app-card>
+    <app-card [hidden]="true"></app-card>
+    <app-card [hidden]="true"></app-card>
+    <app-card [hidden]="true"></app-card>
+  </div>
+
+  <div class="deck-wrapper">
+    <app-card [hidden]="true"></app-card>
+  </div>
+
+  <div class="commands-wrapper">
+    <button>-</button>
+    <button>=</button>
+    <button>+</button>
+    <button (click)="printDeck()">Test deck</button>
+  </div>
+</div>
