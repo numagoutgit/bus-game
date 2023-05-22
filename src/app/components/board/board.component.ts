@@ -15,9 +15,11 @@ export class BoardComponent implements OnInit {
   constructor(private deck: Deck) {}
 
   ngOnInit(): void {
+    this.hiddenCards = [[], [], []];
+    this.visibleCards = [[], [], []];
     for (let i = 0; i < 3; ++i) {
-      this.hiddenCards[i].push(this.deck.drawCard() as Card);
-      this.visibleCards[i].push(this.deck.drawCard() as Card);
+      this.hiddenCards[i].push(this.drawCard() as Card);
+      this.visibleCards[i].push(this.drawCard() as Card);
     }
   }
 
@@ -36,21 +38,40 @@ export class BoardComponent implements OnInit {
     } else {
       this.currentStep = 0;
       for (let i = 0; i <= step; ++i) {
-        const hiddenCard = this.deck.drawCard();
+        const hiddenCard = this.drawCard();
         if (!hiddenCard) return;
         this.hiddenCards[i].push(hiddenCard);
       }
     }
   }
 
-  private play(order: number) {
+  private drawCard() {
     const drawedCard = this.deck.drawCard();
+    if (!drawedCard) this.triggerDefeat();
+    return drawedCard;
+  }
+
+  private play(order: number) {
+    const drawedCard = this.drawCard();
     if (!drawedCard) return;
     if (this.currentStep < 3) {
       this.playVisible(drawedCard, this.currentStep, order);
     } else {
       this.playHidden(drawedCard, this.currentStep - 3, order);
     }
+    if (this.currentStep === 6) this.triggerVictory();
+  }
+
+  private triggerVictory() {
+    console.log('Victory Bro');
+    this.deck.shuffleAll();
+    this.ngOnInit();
+  }
+
+  private triggerDefeat() {
+    console.log('Defeat bro');
+    this.deck.shuffleAll();
+    this.ngOnInit();
   }
 
   public chooseLess() {
