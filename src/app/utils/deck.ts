@@ -9,6 +9,10 @@ export class Deck {
     this.shuffleAll();
   }
 
+  get length() {
+    return this.hiddenCards.length;
+  }
+
   public shuffleAll() {
     this.visibleCards = [];
     const orderedDeck = getOrderedDeck();
@@ -20,7 +24,7 @@ export class Deck {
     shuffleList(this.hiddenCards);
   }
 
-  public drawsCard() {
+  public drawCard() {
     const drawedCard = this.hiddenCards.pop();
     if (!drawedCard) return;
     this.visibleCards.push(drawedCard);
@@ -29,7 +33,7 @@ export class Deck {
 
   public printDeck() {
     console.log(this.hiddenCards);
-    console.log(this.drawsCard());
+    console.log(this.drawCard());
     console.log(this.visibleCards, this.hiddenCards.length);
   }
 }

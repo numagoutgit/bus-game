@@ -1,11 +1,14 @@
 <div class="main">
   <div class="bus-wrapper">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card [hidden]="true"></app-card>
-    <app-card [hidden]="true"></app-card>
-    <app-card [hidden]="true"></app-card>
+    <ng-container *ngFor="let cards of visibleCards">
+      <app-card [card]="cards[cards.length - 1]"></app-card>
+    </ng-container>
+    <ng-container *ngFor="let cards of hiddenCards; index as i">
+      <app-card
+        [card]="cards[cards.length - 1]"
+        [hidden]="currentStep <= i + 3"
+      ></app-card>
+    </ng-container>
   </div>
 
   <div class="deck-wrapper">
@@ -13,9 +16,9 @@
   </div>
 
   <div class="commands-wrapper">
-    <button>-</button>
-    <button>=</button>
-    <button>+</button>
+    <button (click)="chooseLess()">-</button>
+    <button (click)="chooseEqual()">=</button>
+    <button (click)="chooseMore()">+</button>
     <button (click)="printDeck()">Test deck</button>
   </div>
 </div>
