@@ -30,10 +30,4 @@ export class Deck {
     this.visibleCards.push(drawedCard);
     return drawedCard;
   }
-
-  public printDeck() {
-    console.log(this.hiddenCards);
-    console.log(this.drawCard());
-    console.log(this.visibleCards, this.hiddenCards.length);
-  }
 }

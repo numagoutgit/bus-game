@@ -85,8 +85,4 @@ export class BoardComponent implements OnInit {
   public chooseMore() {
     this.play(1);
   }
-
-  public printDeck() {
-    this.deck.printDeck();
-  }
 }
