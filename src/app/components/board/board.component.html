@@ -1,12 +1,16 @@
 <div class="main">
   <div class="bus-wrapper">
-    <ng-container *ngFor="let cards of visibleCards">
-      <app-card [card]="cards[cards.length - 1]"></app-card>
+    <ng-container *ngFor="let cards of visibleCards; index as i">
+      <app-card
+        [card]="cards[cards.length - 1]"
+        [ngClass]="{ red: currentStep === i }"
+      ></app-card>
     </ng-container>
     <ng-container *ngFor="let cards of hiddenCards; index as i">
       <app-card
         [card]="cards[cards.length - 1]"
         [hidden]="currentStep <= i + 3"
+        [ngClass]="{ red: currentStep === i + 3 }"
       ></app-card>
     </ng-container>
   </div>
