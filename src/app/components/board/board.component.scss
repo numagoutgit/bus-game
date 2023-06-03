@@ -1,6 +1,7 @@
 .bus-wrapper {
   display: flex;
   gap: 20px;
+  margin: 10px 0px;
 }
 
 .main {
@@ -12,8 +13,15 @@
 .commands-wrapper {
   display: flex;
   gap: 20px;
+  margin: 10px 0px;
 }
 
 .red {
   color: red;
+}
+
+.deck-wrapper {
+  display: flex;
+  gap: 20px;
+  margin: 10px 0px;
 }

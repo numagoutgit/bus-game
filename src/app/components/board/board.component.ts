@@ -12,11 +12,12 @@ export class BoardComponent implements OnInit {
   public visibleCards: Card[][] = [[], [], []];
   public currentStep = 0;
 
-  constructor(private deck: Deck) {}
+  constructor(public deck: Deck) {}
 
   ngOnInit(): void {
     this.hiddenCards = [[], [], []];
     this.visibleCards = [[], [], []];
+    this.currentStep = 0;
     for (let i = 0; i < 3; ++i) {
       this.hiddenCards[i].push(this.drawCard() as Card);
       this.visibleCards[i].push(this.drawCard() as Card);
