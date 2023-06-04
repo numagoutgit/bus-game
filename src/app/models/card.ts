@@ -1,8 +1,8 @@
 export enum Sign {
-  SPADES = 'Spades',
-  DIAMONDS = 'Diamonds',
-  HEARTS = 'Hearts',
-  CLUBS = 'Clubs',
+  SPADES = 'spades',
+  DIAMONDS = 'diamonds',
+  HEARTS = 'hearts',
+  CLUBS = 'clubs',
 }
 
 export type Card = {

@@ -1,2 +1,8 @@
-<span *ngIf="!hidden" class="card">{{ card.number + " of " + card.sign }}</span>
-<span *ngIf="hidden" class="card">Hidden</span>
+<img
+  [src]="
+    'assets/cards_svg/' +
+    (hidden ? 'back' : card.sign + '_' + card.number) +
+    '.svg'
+  "
+  [alt]="card.number + ' of ' + card.sign"
+/>
